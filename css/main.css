@@ -1,3 +1,12 @@
+:root{
+  --primary-color: plum;
+  --secondary-color: purple;
+  --light-color: white;
+  --dark-color: black;
+  --special-color: tomato; 
+}
+
+
 /* . is class name selector*/
 .container {
   max-width: 900px;
@@ -24,7 +33,7 @@ nav li a:visited{
   display: inline-block;
   text-decoration: none;
   text-transform: uppercase;
-  color: black;
+  color: var(--dark-color);
   transition: transform .5s;
 }
 
@@ -36,4 +45,59 @@ nav li a:focus{
 
 nav li a:active{
   transform: scale(1.25) translateX(15px);
+}
+
+/* [] is for attribute selector*/
+
+a[href="#"]{
+  border: 1px solid var(--primary-color);
+}
+
+/* ^= is to start with*/
+a[href^="http"]{
+  border-left: 8px solid var(--secondary-color);
+}
+
+/* > is child combinator*/
+main > p{
+  font-size: 1.25rem;
+}
+
+/* + is adjacent selector*/
+h2 + p{
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  padding: 1rem;
+}
+
+.stars span{
+  cursor: pointer;
+  transition: opacity .5s;
+}
+
+/* ~ is sibling combinator*/
+.stars span:hover~span{
+  opacity: .4;
+}
+
+/* $= is for value end with*/
+a[href$=".pdf"]{
+  color: var(--special-color);
+}
+
+a[href$=".pdf"]::after{
+  content: "\2193";
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+h2+p::first-line{
+  color: var(--primary-color);
+}
+
+h3+p::first-letter{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: .25rem;
+  margin-right: .15rem;
 }
